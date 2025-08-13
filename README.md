@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-# Tourism-Management-System
-=======
-# Tourism-Management-System
+
 
 This is a Tourism Management System Project build by using html, css, javascript, php, MySQL as mini project in the 5th semister of engineering.
 This website has cool SignUp/SignIn page where you can enter your details and SignUp.
@@ -29,5 +26,4 @@ if you want different name for database then make sure that you change database 
 
 database file also provided
 
-Thank You....
->>>>>>> fb06da1 (Initial commit)
+
