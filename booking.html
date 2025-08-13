@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Booking | TravelEase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/background/eiffel1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 36px;
+            height: 36px;
+            margin-right: 10px;
+            transition: transform 0.5s ease;
+        }
+
+        .logo:hover img {
+            transform: rotate(360deg);
+        }
+
+        .logo h1 {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-links a.active {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box input[type="text"] {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            min-width: 200px;
+        }
+
+        .search-box button {
+            background-color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-box button:hover {
+            background-color: var(--light-color);
+        }
+
+        /* Main Content */
+        main {
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 80px;
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* Booking Form */
+        .booking-form {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--light-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 40px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+            }
+            
+            .nav-links li {
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+            }
+            
+            .search-box {
+                margin-top: 1rem;
+                width: 100%;
+            }
+            
+            .search-box input[type="text"] {
+                width: 100%;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .booking-form {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0.3rem;
+            }
+            
+            .booking-form {
+                padding: 1rem;
+            }
+            
+            .form-control {
+                padding: 0.7rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="mainPage.html"><img src="earth-globe.png" alt="Travel Logo"></a>
+            <h1>TravelEase</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="mainPage.html">Home</a></li>
+            <li><a href="destination.html">Destinations</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+        <div class="search-box">
+            <form method="POST" action="info.php">
+                <input type="text" name="search_p" placeholder="Search destinations...">
+                <button type="submit" name="submit_p"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <h1>Tour Booking</h1>
+        
+        <form class="booking-form" method="POST" action="booking.php" name="form" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="ffirst">First Name</label>
+                <input type="text" id="ffirst" class="form-control" placeholder="Enter your first name" name="ffirst" 
+                       onkeypress="return /[a-zA-Z]/i.test(event.key)" required>
+                <i class="fas fa-user input-icon"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="flast">Last Name</label>
+                <input type="text" id="flast" class="form-control" placeholder="Enter your last name" name="flast" 
+                       onkeypress="return /[a-zA-Z]/i.test(event.key)" required>
+                <i class="fas fa-user input-icon"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="femail">Email</label>
+                <input type="email" id="femail" class="form-control" placeholder="Enter your email" name="femail" 
+                       required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address">
+                <i class="fas fa-envelope input-icon"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" class="form-control" placeholder="Enter your city" name="city" 
+                       onkeypress="return /[a-zA-Z]/i.test(event.key)" required>
+                <i class="fas fa-city input-icon"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="fphone">Phone Number</label>
+                <input type="tel" id="fphone" class="form-control" placeholder="Enter your phone number" name="fphone" 
+                       onkeypress="return /[0-9]/i.test(event.key)" maxlength="10" pattern="[0-9]{10}" 
+                       required title="Please enter a 10-digit phone number">
+                <i class="fas fa-phone input-icon"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="fdesti">Destination</label>
+                <input type="text" id="fdesti" class="form-control" placeholder="Enter your destination" name="fdesti" required>
+                <i class="fas fa-map-marker-alt input-icon"></i>
+            </div>
+
+            <button type="submit" name="submit" class="btn-submit">Book Now</button>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <?php echo date('Y'); ?> TravelEase. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function validateForm() {
+            // First name validation
+            const firstName = document.getElementById('ffirst').value.trim();
+            if (isEmpty(firstName)) {
+                alert('First name is required!');
+                document.getElementById('ffirst').focus();
+                return false;
+            }
+
+            // Last name validation
+            const lastName = document.getElementById('flast').value.trim();
+            if (isEmpty(lastName)) {
+                alert('Last name is required!');
+                document.getElementById('flast').focus();
+                return false;
+            }
+
+            // Email validation
+            const email = document.getElementById('femail').value.trim();
+            if (!validateEmail(email)) {
+                alert('Please enter a valid email address!');
+                document.getElementById('femail').focus();
+                return false;
+            }
+
+            // City validation
+            const city = document.getElementById('city').value.trim();
+            if (isEmpty(city)) {
+                alert('City is required!');
+                document.getElementById('city').focus();
+                return false;
+            }
+
+            // Phone validation
+            const phone = document.getElementById('fphone').value.trim();
+            if (!validatePhone(phone)) {
+                alert('Please enter a valid 10-digit phone number!');
+                document.getElementById('fphone').focus();
+                return false;
+            }
+
+            // Destination validation
+            const destination = document.getElementById('fdesti').value.trim();
+            if (isEmpty(destination)) {
+                alert('Destination is required!');
+                document.getElementById('fdesti').focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        function isEmpty(str) { 
+            return str.length === 0 || !str.trim(); 
+        }
+
+        function validateEmail(email) {
+            const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        function validatePhone(phone) {
+            const re = /^\d{10}$/;
+            return re.test(phone);
+        }
+    </script>
+</body>
+</html>

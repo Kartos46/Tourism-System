@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style type="text/css">
+      .signup-op a{
+        text-decoration: none;
+        border: 2px solid #000;
+        background-color: rgba(68,241,154,1);
+        padding: 8px 20px;
+        color: black;
+        transition: 0.8s ease;
+      }
+      .signup-op a:hover{
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header>   
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <img src="front3.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+          <img src="front2.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+          <img src="front1.jpg" style="width:100%">
+        </div>
+        <div class="main">
+            <ul>
+              <ul class="list">
+                
+                  <li class="logo"><a href="mainPage.html"><img src="earth-globe.png" alt="Logo" style="width:36px;height:36px"></a></li>
+                  <div class="search">
+                    <form method="POST" action="info.php">
+                      <input type="text" name="search_p" placeholder="Search.." size="50">
+                  
+                      <input type="image" name="submit_p" src="search_icon.png" alt="Search image" style="width:22;height:22; margin-left: 60px; margin-top: 32px;">
+                    </form>
+                  </div>
+              </ul>
+              <ul class="list2">
+                <li class="active-menu"><a href="mainPage.html">Home</a></li>
+                <li><a id="long" href="destination.html">Destination</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="index.html">Logout</a></li>
+              </ul>
+            </ul>
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+    </header>
+    <br>
+
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span> 
+      <span class="dot" onclick="currentSlide(2)"></span> 
+      <span class="dot" onclick="currentSlide(3)"></span> 
+    </div>
+    <div class="title">
+      <h1><center>Beauty of Konkan </center></h1>
+    </div>
+    <div class="contain">
+      <div class="heading">
+        <h2>Popular Destination</h2>
+      </div>
+      <div class="box">
+        <div class="imgBox">
+          <img src="images//destination//Amboli6.jpg" alt="Amboli">
+        </div>
+        <div class="name-text">
+          <h2>Amboli</h2>
+          <a href="destination.html" class="btn">Visit</a>
+        </div>
+      </div>
+      <div class="box">
+        <div class="imgBox">
+          <img src="images//destination//Malvan1.jpg" alt="Malvan">
+        </div>
+        <div class="name-text">
+          <h2>Malvan</h2>
+          <a href="destination.html" class="btn">Visit</a>
+        </div>
+      </div>
+      <div class="box">
+        <div class="imgBox">
+          <img src="images//destination//kerala1.jpg" alt="Ratnagiri">
+        </div>
+        <div class="name-text">
+          <h2>Ratnagiri</h2>
+          <a href="destination.html" class="btn">Visit</a>
+        </div>
+      </div>
+      <div class="box">
+        <div class="imgBox">
+          <img src="images//destination//goa1.jpg" alt="shiroda">
+        </div>
+        <div class="name-text">
+          <h2>shiroda</h2>
+          <a href="destination.html" class="btn">Visit</a>
+        </div>
+      </div>
+      <div class="destination-btn">
+        <a href="destination.html">View all</a>
+      </div>
+    </div>
+
+    <div class="contact-section">
+      <div class="contact-container">
+        <h2>Contact Us</h2>
+        <div class="contact-content">
+          <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <p>Have questions about Konkan tourism? Want to share your experience? Reach out to us!</p>
+            <div class="info-item">
+              <img src="images//logo//location.png" alt="Location">
+              <p>Konkan Tourism Office, Ratnagiri, Maharashtra</p>
+            </div>
+            <div class="info-item">
+              <img src="images//logo//email.png" alt="Email">
+              <p>info@konkantourism.com</p>
+            </div>
+            <div class="info-item">
+              <img src="images//logo//phone.png" alt="Phone">
+              <p>+91 1234567890</p>
+            </div>
+          </div>
+          <div class="contact-form">
+              <form method="POST" action="submit_contact.php">
+               <input type="text" name="name" placeholder="Your Name" required>
+               <input type="email" name="email" placeholder="Your Email" required>
+               <input type="text" name="subject" placeholder="Subject">
+               <textarea name="message" placeholder="Your Message" required></textarea>
+               <button type="submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about">
+      <h2>Abouts Us</h2>
+       <footer>
+          <a href="https://www.facebook.com/"> <img src="images//logo//facebook.png" height="25px" width="25px"> </a>
+          <a href="https://www.instagram.com/"> <img src="images//logo//instagram.png" height="25px" width="25px"> </a>
+          <a href="https://twitter.com/"> <img src="images//logo//twitter.png" height="25px" width="25px"> </a>
+          <p> <b> Posted by:Sarvesh Sawant<br>
+          Contact Information: sarveshsawant450@gmail.com<br></b></p>
+       </footer>
+    </div>
+
+    <script>
+var slideIndex = 1;
+var slideInterval;
+var isPaused = false;
+
+// Initialize slideshow
+showSlides(slideIndex);
+
+// Auto-advance slides every 5 seconds
+startSlideShow();
+
+function startSlideShow() {
+  slideInterval = setInterval(function() {
+    if (!isPaused) {
+      plusSlides(1);
+    }
+  }, 5000);
+}
+
+function plusSlides(n) {
+  clearInterval(slideInterval); // Clear existing interval
+  showSlides(slideIndex += n);
+  startSlideShow(); // Restart the slideshow
+}
+
+function currentSlide(n) {
+  clearInterval(slideInterval); // Clear existing interval
+  showSlides(slideIndex = n);
+  startSlideShow(); // Restart the slideshow
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  
+  // Hide all slides with fade out
+  for (i = 0; i < slides.length; i++) {
+    slides[i].classList.remove('active');
+    slides[i].classList.add('fade-out');
+    setTimeout(function() {
+      slides[i].style.display = "none";
+    }, 500);
+  }
+  
+  // Remove active class from all dots
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  
+  // Show current slide with fade in
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(function() {
+    slides[slideIndex-1].classList.remove('fade-out');
+    slides[slideIndex-1].classList.add('active');
+  }, 20);
+  
+  // Add active class to current dot
+  dots[slideIndex-1].className += " active";
+}
+
+// Pause slideshow when hovering over it
+document.querySelector('.slideshow-container').addEventListener('mouseenter', function() {
+  isPaused = true;
+});
+
+document.querySelector('.slideshow-container').addEventListener('mouseleave', function() {
+  isPaused = false;
+});
+</script>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="feedback.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="mainPage.html" class="logo-link">
+                    <img src="earth-globe.png" alt="Travel Logo" class="logo-img">
+                </a>
+            </div>
+            
+            <div class="search-container">
+                <form method="POST" action="info.php" class="search-form">
+                    <input type="text" name="search_p" placeholder="Search destinations..." class="search-input">
+                    <button type="submit" name="submit_p" class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="mainPage.html">Home</a></li>
+                    <li><a href="destination.html">Destinations</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li class="active"><a href="feedback.html">Feedback</a></li>
+                    <li><a href="index.html" class="logout-btn">Logout <i class="fas fa-sign-out-alt"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="feedback-main">
+        <div class="feedback-container">
+            <h1 class="feedback-title">Share Your Feedback</h1>
+            <p class="feedback-subtitle">We value your opinion to help us improve</p>
+            
+            <form name='feedbackForm' method="POST" action="feedback.php" class="feedback-form">
+                <div class="form-group">
+                    <label for="inputText" class="form-label">Your Name</label>
+                    <input type="text" name="name" class="form-input" id="inputText" placeholder="Enter your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inputEmail" class="form-label">Your Email</label>
+                    <input type="email" name="email" class="form-input" id="inputEmail" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="feedbackText" class="form-label">Your Feedback</label>
+                    <textarea name="feedbk" id="feedbackText" rows="5" class="form-textarea" placeholder="Please share your experience with us..." required></textarea>
+                </div>
+                
+                <div class="form-submit">
+                    <button type="submit" name="submit" class="submit-btn">
+                        Submit Feedback <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
