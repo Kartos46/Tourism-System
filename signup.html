@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title> Sign Up Form </title>
+  <title>Sign Up Form</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/signup.css">
-
   <style>
     .admin-btn {
       position: absolute;
@@ -26,42 +25,46 @@
 </head>
 <body>
 
+<<<<<<< HEAD
   <!-- Admin Button -->
+=======
+  <!-- Updated Admin Button -->
+>>>>>>> 31f3bf5 (Updated)
   <a href="login.html" class="admin-btn">Admin</a>
 
   <form name="myForm" action="save.php" method="POST">
     <div class="login-box">
-      <h1> Sign Up </h1>
+      <h1>Sign Up</h1>
 
       <div class="textbox">
-        <input type="text" placeholder="Username" id="fname" name="fname" value="" required>  
+        <input type="text" placeholder="Username" name="fname" required>  
       </div>
 
       <div class="textbox">
-        <input type="password" placeholder="Password" id="password" name="password" value="" maxlength="8"
+        <input type="password" placeholder="Password" name="password" maxlength="8"
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           title="Password must contain at least one number, one uppercase, one lowercase letter, and 8 characters"
           required>
       </div>
 
       <div class="textbox">
-        <input type="text" placeholder="Email" id="email" name="email" value="" required
+        <input type="email" placeholder="Email" name="email"
           pattern="[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9-]+\.[a-z]{2,4}"
-          title="Invalid Email">
+          title="Invalid Email" required>
       </div>
 
       <div class="textbox">
-        <input type="text" placeholder="City" id="city" name="city" value="" required>
+        <input type="text" placeholder="City" name="city" required>
       </div>
 
       <div class="textbox">
-        <input type="text" placeholder="Phone" id="phone" name="phone" value="" required
+        <input type="tel" placeholder="Phone" name="phone" 
           onkeypress="return /[0-9]/i.test(event.key)" maxlength="10"
-          pattern="([0-9]){10,}">
+          pattern="([0-9]){10,}" required>
       </div>
 
-      <input class="btn" type="submit" value="Sign Up"> <br><br>
-      <center><a href="index.html"> Already have an account? </a></center>
+      <input class="btn" type="submit" value="Sign Up">
+      <center><a href="index.html">Already have an account?</a></center>
     </div>
   </form>
 

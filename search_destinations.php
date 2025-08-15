@@ -1,6 +1,6 @@
 <?php
 include 'check_auth.php';
-require_once '../config.php';
+require_once 'config.php';
 
 $search_term = isset($_GET['search']) ? trim($_GET['search']) : '';
 
