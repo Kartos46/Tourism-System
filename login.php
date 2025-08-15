@@ -1,0 +1,136 @@
+<?php include 'auth.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .forgot-password {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            color: #007bff;
+            cursor: pointer;
+        }
+        .error {
+            color: red;
+            margin-bottom: 15px;
+        }
+        .success {
+            color: green;
+            margin-bottom: 15px;
+        }
+        .otp-form, .reset-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Admin Login</h2>
+        
+        <?php if (isset($error)): ?>
+            <div class="error"><?php echo $error; ?></div>
+        <?php endif; ?>
+        
+        <?php if (isset($success)): ?>
+            <div class="success"><?php echo $success; ?></div>
+        <?php endif; ?>
+        
+        <form id="loginForm" method="POST">
+            <div class="form-group">
+                <label for="username">Admin Name</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" name="login" class="btn">Login</button>
+            <a href="#" class="forgot-password" onclick="showForgotPassword()">Forgot Password?</a>
+        </form>
+        
+        <form id="forgotForm" method="POST" class="otp-form">
+            <h3>Reset Password</h3>
+            <div class="form-group">
+                <label for="email">Registered Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <button type="submit" name="forgot_password" class="btn">Send OTP</button>
+            <a href="#" class="forgot-password" onclick="showLoginForm()">Back to Login</a>
+        </form>
+        
+        <form id="resetForm" method="POST" class="reset-form">
+            <h3>Enter OTP and New Password</h3>
+            <div class="form-group">
+                <label for="otp">OTP</label>
+                <input type="text" id="otp" name="otp" required>
+            </div>
+            <div class="form-group">
+                <label for="new_password">New Password</label>
+                <input type="password" id="new_password" name="new_password" required>
+            </div>
+            <button type="submit" name="reset_password" class="btn">Reset Password</button>
+            <a href="#" class="forgot-password" onclick="showLoginForm()">Back to Login</a>
+        </form>
+    </div>
+
+    <script>
+        function showForgotPassword() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('forgotForm').style.display = 'block';
+            document.getElementById('resetForm').style.display = 'none';
+        }
+        
+        function showLoginForm() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('forgotForm').style.display = 'none';
+            document.getElementById('resetForm').style.display = 'none';
+        }
+        
+        function showResetForm() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('forgotForm').style.display = 'none';
+            document.getElementById('resetForm').style.display = 'block';
+        }
+        
+        <?php if (isset($_SESSION['reset_otp'])): ?>
+            showResetForm();
+        <?php endif; ?>
+    </script>
+</body>
+</html>

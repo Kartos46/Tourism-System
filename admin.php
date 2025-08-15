@@ -1,4 +1,5 @@
 <?php
+ include 'check_auth.php';
 include_once('junk.php');
 $que="SELECT * FROM `customer`";
 $result = mysqli_query($db, $que);
