@@ -367,27 +367,22 @@ ALTER TABLE `contacts`
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `admin_users`
---
-
+-- Create the admin_users table without requiring email
 CREATE TABLE IF NOT EXISTS `admin_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `email` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`)
+  UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `admin_users`
---
+-- Insert the admin account with hashed password for 'admin123'
+INSERT INTO `admin_users` (`username`, `password`) 
+VALUES ('admin', '$2y$10$NlY5MDExYmQyYjE0MjAwMuGQ0ZTRmZjYyZDRiYzVhZTMxYjQ3YzJi');
 
-INSERT INTO `admin_users` (`username`, `password`, `email`) 
-VALUES ('admin', '$2y$10$NlY5MDExYmQyYjE0MjAwMuGQ0ZTRmZjYyZDRiYzVhZTMxYjQ3YzJi', 'admin@example.com');
+-- Verify the inserted data
+SELECT * FROM `admin_users` WHERE username = 'admin';
 
 -- --------------------------------------------------------
 
